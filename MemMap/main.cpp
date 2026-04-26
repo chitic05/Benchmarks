@@ -13,16 +13,6 @@
 
 namespace {
 
-constexpr std::size_t kBlockSize = 8ULL * 1024ULL * 1024ULL;
-
-std::uint64_t consumeBytes(const std::uint8_t* data, std::size_t size) {
-    std::uint64_t sum = 0;
-    for (std::size_t i = 0; i < size; ++i) {
-        sum += data[i];
-    }
-    return sum;
-}
-
 [[noreturn]] void fail(const std::string& message) {
     throw std::runtime_error(message + ": " + std::strerror(errno));
 }
@@ -90,11 +80,8 @@ int main(int argc, char* argv[]) {
             const auto start = std::chrono::steady_clock::now();
 
             std::uint64_t runChecksum = 0;
-            std::size_t offset = 0;
-            while (offset < fileSize) {
-                const std::size_t chunk = std::min(kBlockSize, fileSize - offset);
-                runChecksum += consumeBytes(bytes + offset, chunk);
-                offset += chunk;
+            for (std::size_t i = 0; i < fileSize; ++i) {
+                runChecksum += bytes[i];
             }
 
             const auto end = std::chrono::steady_clock::now();

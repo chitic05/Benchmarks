@@ -7,31 +7,24 @@ import time
 from typing import Callable, Dict, List, Tuple
 
 
-def consume_bytes(data: bytes) -> int:
-    return sum(data)
-
-
-def read_raw(path: str, block_size: int) -> int:
+def read_raw_byte_by_byte(path: str) -> int:
     checksum = 0
-    with open(path, "rb", buffering=block_size * 4) as f:
+    with open(path, "rb", buffering=0) as f:
         while True:
-            chunk = f.read(block_size)
-            if not chunk:
+            byte = f.read(1)
+            if not byte:
                 break
-            checksum += consume_bytes(chunk)
+            checksum += byte[0]
     return checksum
 
 
-def read_mmap(path: str, block_size: int) -> int:
+def read_mmap_byte_by_byte(path: str, block_size: int) -> int:
     checksum = 0
     file_size = os.path.getsize(path)
     with open(path, "rb") as f:
         with mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as mm:
-            offset = 0
-            while offset < file_size:
-                end = min(offset + block_size, file_size)
-                checksum += consume_bytes(mm[offset:end])
-                offset = end
+            for i in range(file_size):
+                checksum += mm[i]
     return checksum
 
 
@@ -120,9 +113,9 @@ def main() -> int:
     runners: List[Tuple[str, Callable[[], int]]] = []
     for method in methods:
         if method == "raw":
-            runners.append(("raw-open", lambda: read_raw(args.file, block_size)))
+            runners.append(("raw-read", lambda: read_raw_byte_by_byte(args.file)))
         elif method == "mmap":
-            runners.append(("mmap", lambda: read_mmap(args.file, block_size)))
+            runners.append(("mmap", lambda: read_mmap_byte_by_byte(args.file, block_size)))
         elif method == "pandas":
             runners.append(("pandas-read_csv", lambda: read_pandas(args.file, args.pandas_chunksize)))
         elif method:

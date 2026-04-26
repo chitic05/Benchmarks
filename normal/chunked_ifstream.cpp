@@ -3,23 +3,8 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <stdexcept>
 #include <string>
 #include <vector>
-
-namespace {
-
-constexpr std::size_t kBlockSize = 8ULL * 1024ULL * 1024ULL;
-
-std::uint64_t consumeBytes(const std::uint8_t* data, std::size_t size) {
-    std::uint64_t sum = 0;
-    for (std::size_t i = 0; i < size; ++i) {
-        sum += data[i];
-    }
-    return sum;
-}
-
-}  // namespace
 
 int main(int argc, char* argv[]) {
     if (argc < 2 || argc > 3) {
@@ -59,7 +44,6 @@ int main(int argc, char* argv[]) {
     }
     const std::size_t fileSize = static_cast<std::size_t>(streamSize);
 
-    std::vector<std::uint8_t> buffer(kBlockSize);
     std::uint64_t checksum = 0;
     double totalSeconds = 0.0;
 
@@ -73,11 +57,12 @@ int main(int argc, char* argv[]) {
         const auto start = std::chrono::steady_clock::now();
         std::uint64_t runChecksum = 0;
 
+        std::vector<char> buffer(8192);
         while (in) {
-            in.read(reinterpret_cast<char*>(buffer.data()), static_cast<std::streamsize>(buffer.size()));
+            in.read(buffer.data(), static_cast<std::streamsize>(buffer.size()));
             const std::streamsize bytesRead = in.gcount();
-            if (bytesRead > 0) {
-                runChecksum += consumeBytes(buffer.data(), static_cast<std::size_t>(bytesRead));
+            for (std::streamsize i = 0; i < bytesRead; ++i) {
+                runChecksum += static_cast<unsigned char>(buffer[i]);
             }
         }
 
@@ -97,7 +82,7 @@ int main(int argc, char* argv[]) {
     const double gibPerSec = gib / avgSeconds;
 
     std::cout << std::fixed << std::setprecision(3);
-    std::cout << "Method      : ifstream\n";
+    std::cout << "Method      : ifstream-get\n";
     std::cout << "File        : " << path << "\n";
     std::cout << "Size (GiB)  : " << gib << "\n";
     std::cout << "Iterations  : " << iterations << "\n";
