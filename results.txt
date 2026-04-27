@@ -1,12 +1,42 @@
-4 ITERATIONS
+1 ITERATION (WARM CACHE)
 
 Huawei (Linux):
-MemMap ->
-Cunked I/O ->
-Simple fstream ->
-Python: raw ->
-        memap ->
-        pandas ->
+MemMap -> Avg time (s): 12.335, Speed GiB/s: 0.811, Checksum: 554945866603
+Cunked I/O -> Avg time (s): 12.332, Speed GiB/s: 0.811, Checksum: 554945866603
+Simple fstream -> Avg time (s): 92.046, Speed GiB/s: 0.109, Checksum: 554945866603
+Python: raw -> N/A (script removed)
+        memap -> N/A (script removed)
+        pandas -> N/A (script removed)
+
+1 ITERATION (COLD CACHE)
+
+Huawei (Linux):
+MemMap -> Avg time (s): 7.255, Speed GiB/s: 1.378, Checksum: 554945866603
+Cunked I/O -> Avg time (s): 6.565, Speed GiB/s: 1.523, Checksum: 554945866603
+Simple fstream -> Avg time (s): 84.007, Speed GiB/s: 0.119, Checksum: 554945866603
+Python: raw -> N/A (script removed)
+        memap -> N/A (script removed)
+        pandas -> N/A (script removed)
+
+5 ITERATIONS (WARM CACHE)
+
+Huawei (Linux):
+MemMap -> Avg time (s): 11.181, Speed GiB/s: 0.894, Checksum: 2774729333015
+Cunked I/O -> Avg time (s): 11.178, Speed GiB/s: 0.895, Checksum: 2774729333015
+Simple fstream -> Avg time (s): 99.320, Speed GiB/s: 0.101, Checksum: 2774729333015
+Python: raw -> N/A (script removed)
+        memap -> N/A (script removed)
+        pandas -> N/A (script removed)
+
+5 ITERATIONS (COLD CACHE)
+
+Huawei (Linux):
+MemMap -> Avg time (s): 9.052, Speed GiB/s: 1.105, Checksum: 2774729333015
+Cunked I/O -> Avg time (s): 6.088, Speed GiB/s: 1.642, Checksum: 2774729333015
+Simple fstream -> Avg time (s): 82.323, Speed GiB/s: 0.121, Checksum: 2774729333015
+Python: raw -> N/A (script removed)
+        memap -> N/A (script removed)
+        pandas -> N/A (script removed)
 
 Huawei (Windows):
 MemMap ->

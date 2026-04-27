@@ -44,8 +44,11 @@ int main(int argc, char* argv[]) {
     }
     const std::size_t fileSize = static_cast<std::size_t>(streamSize);
 
+    constexpr std::size_t kBufferSize = 8 * 1024 * 1024;
+
     std::uint64_t checksum = 0;
     double totalSeconds = 0.0;
+    std::vector<char> buffer(kBufferSize);
 
     for (int run = 0; run < iterations; ++run) {
         std::ifstream in(path, std::ios::binary);
@@ -57,7 +60,6 @@ int main(int argc, char* argv[]) {
         const auto start = std::chrono::steady_clock::now();
         std::uint64_t runChecksum = 0;
 
-        std::vector<char> buffer(8192);
         while (in) {
             in.read(buffer.data(), static_cast<std::streamsize>(buffer.size()));
             const std::streamsize bytesRead = in.gcount();
@@ -74,7 +76,7 @@ int main(int argc, char* argv[]) {
         const auto end = std::chrono::steady_clock::now();
         const std::chrono::duration<double> elapsed = end - start;
         totalSeconds += elapsed.count();
-        checksum ^= runChecksum;
+        checksum += runChecksum;
     }
 
     const double gib = static_cast<double>(fileSize) / (1024.0 * 1024.0 * 1024.0);
@@ -82,7 +84,7 @@ int main(int argc, char* argv[]) {
     const double gibPerSec = gib / avgSeconds;
 
     std::cout << std::fixed << std::setprecision(3);
-    std::cout << "Method      : ifstream-get\n";
+    std::cout << "Method      : ifstream-chunked\n";
     std::cout << "File        : " << path << "\n";
     std::cout << "Size (GiB)  : " << gib << "\n";
     std::cout << "Iterations  : " << iterations << "\n";

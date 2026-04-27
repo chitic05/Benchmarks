@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
             const auto end = std::chrono::steady_clock::now();
             const std::chrono::duration<double> elapsed = end - start;
             totalSeconds += elapsed.count();
-            checksum ^= runChecksum;
+            checksum += runChecksum;
         }
 
         const double gib = static_cast<double>(fileSize) / (1024.0 * 1024.0 * 1024.0);
