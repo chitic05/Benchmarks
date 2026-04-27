@@ -93,10 +93,5 @@ Simple fstream -> N/A (removed)
 Python: raw -> N/A (cold cache not recorded; clearing Windows cache is complicated)
         memap -> N/A (cold cache not recorded; clearing Windows cache is complicated)
         pandas -> N/A (cold cache not recorded; clearing Windows cache is complicated)
-Method      : mmap-win32
-File        : financial_data.csv
-Size (GiB)  : 10.000
-Iterations  : 1
-Avg time (s): 20.347
-Speed GiB/s : 0.491
-Checksum    : 553907793927
+
+
