@@ -8,6 +8,14 @@ Python: raw -> N/A (script removed)
         memap -> N/A (script removed)
         pandas -> N/A (script removed)
 
+MSI (Windows):
+MemMap -> Avg time (s): 14.432, Speed GiB/s: 0.693, Checksum: 553907793927
+Cunked I/O -> Avg time (s): 6.426, Speed GiB/s: 1.556, Checksum: 553907793927
+Simple fstream -> N/A (removed)
+Python: raw -> N/A (script removed)
+        memap -> N/A (script removed)
+        pandas -> N/A (script removed)
+
 1 ITERATION (COLD CACHE)
 
 Huawei (Linux):
@@ -18,12 +26,28 @@ Python: raw -> N/A (script removed)
         memap -> N/A (script removed)
         pandas -> N/A (script removed)
 
+MSI (Windows):
+MemMap -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+Cunked I/O -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+Simple fstream -> N/A (removed)
+Python: raw -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+        memap -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+        pandas -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+
 5 ITERATIONS (WARM CACHE)
 
 Huawei (Linux):
 MemMap -> Avg time (s): 11.181, Speed GiB/s: 0.894, Checksum: 2774729333015
 Cunked I/O -> Avg time (s): 11.178, Speed GiB/s: 0.895, Checksum: 2774729333015
 Simple fstream -> Avg time (s): 99.320, Speed GiB/s: 0.101, Checksum: 2774729333015
+Python: raw -> N/A (script removed)
+        memap -> N/A (script removed)
+        pandas -> N/A (script removed)
+
+MSI (Windows):
+MemMap -> Avg time (s): 14.432, Speed GiB/s: 0.693, Checksum: 2769538969635
+Cunked I/O -> Avg time (s): 7.072, Speed GiB/s: 1.414, Checksum: 2769538969635
+Simple fstream -> N/A (removed)
 Python: raw -> N/A (script removed)
         memap -> N/A (script removed)
         pandas -> N/A (script removed)
@@ -39,17 +63,17 @@ Python: raw -> N/A (script removed)
         pandas -> N/A (script removed)
 
 Huawei (Windows):
-MemMap ->
-Cunked I/O ->
-Simple fstream ->
-Python: raw ->
-        memap ->
-        pandas ->
+MemMap -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+Cunked I/O -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+Simple fstream -> N/A (removed)
+Python: raw -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+        memap -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+        pandas -> N/A (cold cache not recorded; clearing Windows cache is complicated)
 
 MSI (Windows):
-MemMap ->
-Cunked I/O ->
-Simple fstream ->
-Python: raw ->
-        memap ->
-        pandas ->
+MemMap -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+Cunked I/O -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+Simple fstream -> N/A (removed)
+Python: raw -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+        memap -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+        pandas -> N/A (cold cache not recorded; clearing Windows cache is complicated)
