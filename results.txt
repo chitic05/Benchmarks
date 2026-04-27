@@ -8,6 +8,14 @@ Python: raw -> N/A (script removed)
         memap -> N/A (script removed)
         pandas -> N/A (script removed)
 
+Huawei (Windows):
+MemMap -> Avg time (s): 20.487, Speed GiB/s: 0.488, Checksum: 553907793927
+Cunked I/O -> Avg time (s): 10.765, Speed GiB/s: 0.929, Checksum: 553907793927
+Simple fstream -> N/A (removed)
+Python: raw -> N/A (script removed)
+        memap -> N/A (script removed)
+        pandas -> N/A (script removed)
+
 MSI (Windows):
 MemMap -> Avg time (s): 14.432, Speed GiB/s: 0.693, Checksum: 553907793927
 Cunked I/O -> Avg time (s): 6.426, Speed GiB/s: 1.556, Checksum: 553907793927
@@ -40,6 +48,14 @@ Huawei (Linux):
 MemMap -> Avg time (s): 11.181, Speed GiB/s: 0.894, Checksum: 2774729333015
 Cunked I/O -> Avg time (s): 11.178, Speed GiB/s: 0.895, Checksum: 2774729333015
 Simple fstream -> Avg time (s): 99.320, Speed GiB/s: 0.101, Checksum: 2774729333015
+Python: raw -> N/A (script removed)
+        memap -> N/A (script removed)
+        pandas -> N/A (script removed)
+
+Huawei (Windows):
+MemMap -> Avg time (s): 20.010, Speed GiB/s: 0.500, Checksum: 2769538969635
+Cunked I/O -> Avg time (s): 10.640, Speed GiB/s: 0.940, Checksum: 2769538969635
+Simple fstream -> N/A (removed)
 Python: raw -> N/A (script removed)
         memap -> N/A (script removed)
         pandas -> N/A (script removed)
@@ -77,3 +93,10 @@ Simple fstream -> N/A (removed)
 Python: raw -> N/A (cold cache not recorded; clearing Windows cache is complicated)
         memap -> N/A (cold cache not recorded; clearing Windows cache is complicated)
         pandas -> N/A (cold cache not recorded; clearing Windows cache is complicated)
+Method      : mmap-win32
+File        : financial_data.csv
+Size (GiB)  : 10.000
+Iterations  : 1
+Avg time (s): 20.347
+Speed GiB/s : 0.491
+Checksum    : 553907793927
