@@ -1,0 +1,25 @@
+4 ITERATIONS
+
+Huawei (Linux):
+MemMap ->
+Cunked I/O ->
+Simple fstream ->
+Python: raw ->
+        memap ->
+        pandas ->
+
+Huawei (Windows):
+MemMap ->
+Cunked I/O ->
+Simple fstream ->
+Python: raw ->
+        memap ->
+        pandas ->
+
+MSI (Windows):
+MemMap ->
+Cunked I/O ->
+Simple fstream ->
+Python: raw ->
+        memap ->
+        pandas ->
